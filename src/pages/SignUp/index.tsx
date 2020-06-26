@@ -1,3 +1,4 @@
+import { Form } from '@unform/web';
 import React from 'react';
 import {
   FiArrowLeft as IconArrowLeft,
@@ -10,34 +11,45 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 import * as S from './styled';
 
-const SignUp: React.FC = () => (
-  <S.Container>
-    <S.Background />
+const SignUp: React.FC = () => {
+  function handleSubmit(data: object): void {
+    console.log('data: ', data);
+  }
 
-    <S.Content>
-      <img src={Logo} alt="Logo GoBarber" />
+  return (
+    <S.Container>
+      <S.Background />
 
-      <form>
-        <h1>Faça seu cadastro</h1>
+      <S.Content>
+        <img src={Logo} alt="Logo GoBarber" />
 
-        <Input name="name" icon={IconUser} placeholder="Nome" type="text" />
-        <Input name="email" icon={IconMail} placeholder="E-mail" type="email" />
-        <Input
-          name="password"
-          icon={IconLock}
-          placeholder="Senha"
-          type="password"
-        />
+        <Form onSubmit={handleSubmit}>
+          <h1>Faça seu cadastro</h1>
 
-        <Button type="submit">Cadastrar</Button>
-      </form>
+          <Input name="name" icon={IconUser} placeholder="Nome" type="text" />
+          <Input
+            name="email"
+            icon={IconMail}
+            placeholder="E-mail"
+            type="email"
+          />
+          <Input
+            name="password"
+            icon={IconLock}
+            placeholder="Senha"
+            type="password"
+          />
 
-      <a href="login">
-        <IconArrowLeft />
-        Voltar para logon
-      </a>
-    </S.Content>
-  </S.Container>
-);
+          <Button type="submit">Cadastrar</Button>
+        </Form>
+
+        <a href="login">
+          <IconArrowLeft />
+          Voltar para logon
+        </a>
+      </S.Content>
+    </S.Container>
+  );
+};
 
 export default SignUp;
