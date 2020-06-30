@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthProvider } from './hooks/AuthContext';
+import AppProvider from './hooks';
 import SignIn from './pages/SignIn';
 import GlobalStyle from './styles/global';
 
@@ -7,10 +7,10 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <AuthProvider>
+
+      <AppProvider>
         <SignIn />
-      </AuthProvider>
-      {/* <SignUp /> */}
+      </AppProvider>
     </>
   );
 }
