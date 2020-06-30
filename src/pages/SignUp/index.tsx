@@ -7,6 +7,7 @@ import {
   FiMail as IconMail,
   FiUser as IconUser,
 } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import Logo from '../../assets/logo.svg';
 import Button from '../../components/Button';
@@ -46,27 +47,29 @@ const SignUp: React.FC = () => {
       <S.Background />
 
       <S.Content>
-        <img src={Logo} alt="Logo GoBarber" />
+        <S.AnimationContainer>
+          <img src={Logo} alt="Logo GoBarber" />
 
-        <Form ref={formRef} onSubmit={handleSubmit}>
-          <h1>Faça seu cadastro</h1>
+          <Form ref={formRef} onSubmit={handleSubmit}>
+            <h1>Faça seu cadastro</h1>
 
-          <Input name="name" icon={IconUser} placeholder="Nome" type="text" />
-          <Input name="email" icon={IconMail} placeholder="E-mail" />
-          <Input
-            name="password"
-            icon={IconLock}
-            placeholder="Senha"
-            type="password"
-          />
+            <Input name="name" icon={IconUser} placeholder="Nome" type="text" />
+            <Input name="email" icon={IconMail} placeholder="E-mail" />
+            <Input
+              name="password"
+              icon={IconLock}
+              placeholder="Senha"
+              type="password"
+            />
 
-          <Button type="submit">Cadastrar</Button>
-        </Form>
+            <Button type="submit">Cadastrar</Button>
+          </Form>
 
-        <a href="login">
-          <IconArrowLeft />
-          Voltar para logon
-        </a>
+          <Link to="/">
+            <IconArrowLeft />
+            Voltar para logon
+          </Link>
+        </S.AnimationContainer>
       </S.Content>
     </S.Container>
   );

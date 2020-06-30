@@ -1,5 +1,5 @@
 import { shade } from 'polished';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import signInBackgroundImg from '../../assets/sign-in-background.png';
 
 export const Container = styled.div`
@@ -8,13 +8,38 @@ export const Container = styled.div`
   align-items: stretch;
 `;
 
+export const Background = styled.div`
+  flex: 1;
+  background: url(${signInBackgroundImg}) no-repeat center;
+  background-size: cover;
+`;
+
 export const Content = styled.div`
+  display: flex;
+  place-content: center;
+  place-items: center;
+  width: 100%;
+  max-width: 700px;
+`;
+
+const appearFromLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-50%)
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0)
+  }
+`;
+
+export const AnimationContainer = styled.div`
   display: flex;
   flex-direction: column;
   place-content: center center;
   place-items: center center;
-  width: 100%;
-  max-width: 700px;
+
+  animation: ${appearFromLeft} 800ms;
 
   form {
     margin: 80px 0;
@@ -56,10 +81,4 @@ export const Content = styled.div`
       margin-right: 16px;
     }
   }
-`;
-
-export const Background = styled.div`
-  flex: 1;
-  background: url(${signInBackgroundImg}) no-repeat center;
-  background-size: cover;
 `;
